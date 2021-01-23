@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -75,7 +74,6 @@ const ColorList = ({ colors, updateColors }) => {
 
   return (
     <div className="colors-wrap">
-      <Link to='/'>Home</Link>
       <p>colors</p>
       <button onClick={() => setAdding(true)}>Add a Color</button>
       <ul>
@@ -160,7 +158,7 @@ const ColorList = ({ colors, updateColors }) => {
           </label>
           <div className="button-row">
             <button type="submit">add</button>
-            <button onClick={() => setAdding(false)}>cancel</button>
+            <button onClick={() => setAdding(false)}>done</button>
           </div>
         </form>
       )}

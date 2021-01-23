@@ -36,3 +36,16 @@ test("Fetches data and renders the bubbles", async () => {
     const colorName = screen.getByText(/aqua/i);
     expect(colorName).toBeInTheDocument(); 
 });
+
+test("data request fails and renders an error message", async () => {
+    const mockError = {error: 'API is currently unavailable for color request'};
+    mockGetColors.mockRejectedValueOnce(mockError);
+    const {rerender} = render(<BubblePage/>);
+    
+    await waitFor(() => {
+      rerender(<BubblePage/>); 
+    });
+    screen.debug();
+    const colorName = screen.queryByText(/aqua/i);
+    expect(colorName).not.toBeTruthy(); 
+});
