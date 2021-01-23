@@ -30,17 +30,17 @@ const Login = () => {
         const token = res.data.payload;
         console.log(token);
         localStorage.setItem('token', token);
+        history.push('/bubblepage');
       })
       .catch(err => console.log(err))
-    setFormValues(initialFormValues);
-    history.push('/bubblepage');
+    setFormValues(initialFormValues); 
   }
   return (
     <>
       <h1>Welcome to the Bubble App!</h1>
       <Link to='/'>Home</Link>
       <Link to='/bubblepage'>Bubbles</Link>
-      
+
       <div className='login-wrapper'>
                <form className='form' onSubmit={loginUser}>
                    <h3>Login to Your Account</h3>
