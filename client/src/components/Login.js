@@ -8,6 +8,7 @@ const initialFormValues = {
 }
 const Login = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
+  const [loginError, setLoginError] = useState('');
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -21,18 +22,22 @@ const Login = () => {
   const loginUser = (e) => {
     e.preventDefault();
     console.log(formValues);
-    const testValues = {
-      username: 'Lambda School',
-      password: 'i<3Lambd4'
-    }
-    axios.post('http://localhost:5000/api/login', testValues)
+    // const testValues = {
+    //   username: 'Lambda School',
+    //   password: 'i<3Lambd4'
+    // }
+    axios.post('http://localhost:5000/api/login', formValues)
       .then(res => {
+        setLoginError('');
         const token = res.data.payload;
         console.log(token);
         localStorage.setItem('token', token);
         history.push('/bubblepage');
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err);
+        setLoginError('Login request failed, username and/or password are not valid');
+      })
     setFormValues(initialFormValues); 
   }
   return (
@@ -63,6 +68,7 @@ const Login = () => {
                    />
                    </div>
                    <button type='submit'>Login</button>
+                   {loginError && <p style={{color: 'crimson'}}>{loginError}</p>}
                </form>
         </div>
     </>
