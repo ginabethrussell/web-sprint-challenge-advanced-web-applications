@@ -53,12 +53,7 @@ const ColorList = ({ colors, updateColors }) => {
       .catch(err => console.log(err))
   };
 
-  const handleNewColorChange = (e) => {
-    setNewColor({
-      ...newColor,
-      [e.target.name]: e.target.value
-    })
-  }
+  
   const addColor = e => {
     e.preventDefault();
     console.log(newColor);

@@ -37,7 +37,7 @@ test("Fetches data and renders the bubbles", async () => {
     expect(colorName).toBeInTheDocument(); 
 });
 
-test("data request fails and renders an error message", async () => {
+test("data request fails and color names are not in the DOM", async () => {
     const mockError = {error: 'API is currently unavailable for color request'};
     mockGetColors.mockRejectedValueOnce(mockError);
     const {rerender} = render(<BubblePage/>);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { getColors } from '../utils/getColors';
 
 import Bubbles from "./Bubbles";
@@ -7,7 +6,6 @@ import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
-  const [loadingError, setLoadingError] = useState('');
   
   useEffect(() => {
   // fetch your colors data from the server when the component mounts
